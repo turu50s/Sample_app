@@ -30,4 +30,5 @@ $ rails server
 ```
 詳しくは、[*Ruby on Railsチュートリアル*](https://railstutorial.jp/)を
 参考にして下さい。
+```
 * Ruby version v5.4.1
