@@ -30,6 +30,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
       unless user == @admin
         assert_select 'a[href=?]', user_path(user), text: 'delete'
       end
+      assert user.activated?  # 一覧されているユーザーは有効化されたユーザーか？
     end
     assert_difference 'User.count', -1 do
       delete user_path(@non_admin)
