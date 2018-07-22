@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+    # Micropostモデルとの関連付け
+    has_many :microposts, dependent: :destroy
+
+    # instance変数の定義
     attr_accessor :remember_token, :activation_token, :reset_token
 
     # before_save { self.email = email.downcase }
@@ -81,6 +85,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def feed
+    Micropost.where("user_id=?", id)
   end
 
   private
